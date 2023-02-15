@@ -7,11 +7,13 @@ import "../../Calendar.css";
 import { MdOutlinePlace, MdStorefront } from "react-icons/md";
 import { RiDeleteBin6Line, RiHotelLine } from "react-icons/ri";
 import { BiCalendarHeart } from "react-icons/bi";
+
 function TravelCalendar() {
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
   // 달력 안보였다가 보이게
   const [visible, setVisible] = useState(false);
+
   const openCalendar = () => {
     setVisible(!visible);
   };
@@ -38,6 +40,7 @@ function TravelCalendar() {
   ];
   const [filters, setFilter] = useState(arr[0].title);
   // + 버튼을 x 로 바꾸기
+
   return (
     <div className="w-[360px]">
       <h2 className="text-center my-8 mt-12 text-4xl font-bold">부산</h2>
@@ -48,32 +51,32 @@ function TravelCalendar() {
         </button>
         <input
           type="text"
-          className="w-[120px]  p-2 text-xl border-green1 border-b-4 bg-transparent outline-none opacity-70 my-5 rounded-xl"
+          className="w-[120px]  p-2 text-xl border-b-2 border-green1 outline-none opacity-70 my-5 bg-transparent"
           placeholder="출발하는 날"
           value={startDate || ""}
           disabled
         />
-        <span className="text-xl my-auto px-2">~</span>
+        <span className="text-xl my-auto">~</span>
         <input
           type="text"
-          className="w-[120px]  p-2 text-xl border-green1 outline-none bg-transparent opacity-70 border-b-4 rounded-xl"
+          className="w-[120px]  p-2 text-xl border-b-2 border-green1 outline-none opacity-70 bg-transparent"
           placeholder="돌아오는 날"
           value={endDate || ""}
           disabled
         />
       </div>
       {visible && (
-        <div className="px-11 absolute z-20">
+        <div className="px-10">
           <Calendar
             calendarType="US"
             className="font-semibold"
             onChange={changeDate}
             selectRange={true}
             formatDay={(locale, date) => moment(date).format("D")}
-          ></Calendar>
-          <div className="bg-white ">
+          />
+          <div className="flex self-end gap-1 mr-1 text-sm py-1">
             <button
-              className=" border p-1 rounded bg-main text-white"
+              className="border p-1 rounded bg-main text-white"
               onClick={closeCalendar}
             >
               닫기
@@ -87,7 +90,7 @@ function TravelCalendar() {
           </div>
         </div>
       )}
-      <p className="text-center  my-8 ">선택목록</p>
+      <p className="text-center  my-8">선택목록</p>
       <div className="flex relative items-center justify-center">
         <ButtonGroup filters={filters} arr={arr} setFilter={setFilter} />
       </div>

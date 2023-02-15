@@ -7,7 +7,6 @@ import Detail from "./pages/Detail";
 import MyPage from "./pages/MyPage";
 import Header from "./components/common/Header";
 import SignUp from "./pages/SignUp";
-import Review from "./pages/Review";
 function App() {
   return (
     <Router>
@@ -18,7 +17,6 @@ function App() {
         <Route path="/detail" element={<Detail />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/review" element={<Review />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
